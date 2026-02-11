@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { TerminalLayout } from './components/layout/TerminalLayout';
 import { BootSequence } from './components/hero/BootSequence';
 import { SystemMonitor } from './components/dashboard/SystemMonitor';
+import { AboutMe } from './components/about/AboutMe';
 import { ProjectDirectory } from './components/projects/ProjectDirectory';
 import { CommandBar } from './components/footer/CommandBar';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -22,6 +23,7 @@ function App() {
             className="flex-grow flex flex-col"
           >
             <SystemMonitor />
+            <AboutMe />
             <ProjectDirectory />
             <CommandBar />
           </motion.div>

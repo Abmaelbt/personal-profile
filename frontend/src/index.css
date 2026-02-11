@@ -3,17 +3,24 @@
 
 @theme {
   --color-terminal-black: #050505;
-  --color-terminal-green: #22c55e;
+  --color-terminal-green: #ffffff;
   --color-terminal-cyan: #06b6d4;
   --color-terminal-muted: #6b7280;
-  
+
   --font-mono: "JetBrains Mono", monospace;
-  
+
   --animate-blink: blink 1s step-end infinite;
-  
+
   @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
+
+    0%,
+    100% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0;
+    }
   }
 }
 
@@ -33,7 +40,8 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center; /* or start */
+  place-items: center;
+  /* or start */
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -43,13 +51,16 @@ body {
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
-  background: var(--color-terminal-black); 
+  background: var(--color-terminal-black);
 }
+
 ::-webkit-scrollbar-thumb {
-  background: var(--color-terminal-muted); 
+  background: var(--color-terminal-muted);
   border-radius: 0;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-terminal-green); 
+  background: var(--color-terminal-green);
 }
