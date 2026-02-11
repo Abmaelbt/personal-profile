@@ -35,6 +35,7 @@ TerminaLab is an ultra-minimalist, single-page personal portfolio and live telem
 ### Installation
 
 ```bash
+cd frontend
 bun install
 ```
 
