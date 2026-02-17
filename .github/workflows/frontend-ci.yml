@@ -1,4 +1,5 @@
 name: Frontend CI/CD
+# Force trigger pipeline update
 
 on:
   push:
