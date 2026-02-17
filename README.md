@@ -4,7 +4,7 @@ TerminaLab is an ultra-minimalist, single-page personal portfolio and live telem
 
 ![Terminal Dashboard](./terminal_dashboard.png)
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Runtime**: [Bun](https://bun.sh) (Replaced Node.js)
 - **Framework**: [React](https://react.dev) + [Vite](https://vitejs.dev) + TypeScript
@@ -12,7 +12,7 @@ TerminaLab is an ultra-minimalist, single-page personal portfolio and live telem
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
 - **Icons**: [Lucide React](https://lucide.dev)
 
-## ✨ Features
+## Features
 
 - **Boot Sequence**: Realistic typing animation imitating a system initialization.
 - **System Monitor**: Live-updating dashboard with simulated telemetry (Uptime, Requests/Sec, Cluster Status).
@@ -20,7 +20,7 @@ TerminaLab is an ultra-minimalist, single-page personal portfolio and live telem
 - **Command Bar**: Interactive footer with command-line style links.
 - **CRT Effect**: Subtle scanline overlay for retro terminal vibes.
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -39,11 +39,21 @@ cd frontend
 bun install
 ```
 
-### Development
+### Backend (Target System)
+
+Start the Spring Boot backend (required for live telemetry):
+
+```bash
+cd backend
+mvn spring-boot:run
+```
+
+### Frontend (Dashboard)
 
 Start the development server:
 
 ```bash
+cd frontend
 bun run dev
 ```
 
@@ -52,16 +62,18 @@ bun run dev
 Build for production:
 
 ```bash
+cd frontend
 bun run build
 ```
 
 Preview the build:
 
 ```bash
+cd frontend
 bun run preview
 ```
 
-## 🎨 Customization
+## Customization
 
 - **Theme**: Modify `src/index.css` to change the CSS variables for colors (Green, Cyan, Black).
 - **Content**: Update data in individual components (`src/components/...`).

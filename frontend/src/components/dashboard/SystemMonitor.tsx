@@ -1,15 +1,39 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
+interface SystemInfo {
+    hostname: string;
+    ip: string;
+    uptime: string;
+    status: string;
+}
+
 export const SystemMonitor = () => {
     const [uptime, setUptime] = useState(314225); // Start with some uptime
     const [reqs, setReqs] = useState(42);
+    const [systemInfo, setSystemInfo] = useState<SystemInfo | null>(null);
 
     useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch('/api/ops/info');
+                if (response.ok) {
+                    const data = await response.json();
+                    setSystemInfo(data);
+                }
+            } catch (error) {
+                console.error("Failed to fetch system info", error);
+            }
+        };
+
         const interval = setInterval(() => {
             setUptime((u) => u + 1);
             setReqs(Math.floor(Math.random() * 25) + 35); // Fluctuate between 35-60
+            fetchData();
         }, 1000);
+
+        fetchData(); // Initial fetch
+
         return () => clearInterval(interval);
     }, []);
 
@@ -39,20 +63,26 @@ export const SystemMonitor = () => {
                             transition={{ duration: 2, repeat: Infinity }}
                             className="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"
                         />
-                        <span className="text-white font-bold text-shadow-sm">ONLINE (K3s)</span>
+                        <span className="text-white font-bold text-shadow-sm">
+                            {systemInfo ? systemInfo.status : "OFFLINE (Mock)"}
+                        </span>
                     </div>
                 </div>
 
                 {/* CURRENT POD ID */}
                 <div className="flex flex-col">
-                    <span className="text-terminal-muted text-xs mb-1">[CURRENT_POD_ID]</span>
-                    <span className="text-terminal-cyan">devops-demo-xf92a-2b</span>
+                    <span className="text-terminal-muted text-xs mb-1">[CURRENT_HOST]</span>
+                    <span className="text-terminal-cyan">
+                        {systemInfo ? systemInfo.hostname : "devops-demo-xf92a-2b"}
+                    </span>
                 </div>
 
                 {/* UPTIME */}
                 <div className="flex flex-col">
                     <span className="text-terminal-muted text-xs mb-1">[UPTIME]</span>
-                    <span className="text-white">{formatUptime(uptime)}</span>
+                    <span className="text-white">
+                        {systemInfo ? systemInfo.uptime : formatUptime(uptime)}
+                    </span>
                 </div>
 
                 {/* REQUESTS/SEC */}
