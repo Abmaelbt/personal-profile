@@ -75,7 +75,7 @@ bun run preview
 
 ## Customization
 
-- **Theme**: Modify `src/index.css` to change the CSS variables for colors (Green, Cyan, Black).
+- **Theme**: Modify `src/index.css` to change the CSS variables colors (Green, Cyan, Black).
 - **Content**: Update data in individual components (`src/components/...`).
 
 ---
